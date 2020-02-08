@@ -9,6 +9,8 @@ urlpatterns = [
     path('acc/', include('accounts.urls')),
     path('j/', include('jobs.urls')),
     path('about/', views.about,name='about'),
+    path('contact/', views.contact),
+    path('send/',views.sendemail),
     path('', views.home),
 ]
 urlpatterns = urlpatterns+ static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

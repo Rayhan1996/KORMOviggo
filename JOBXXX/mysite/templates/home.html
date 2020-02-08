@@ -1,0 +1,108 @@
+
+  
+<!DOCTYPE html>
+  {% load static %}
+  <html lang="en">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <head>
+      <meta charset="UTF-8">
+      <title>KormOviggo</title>
+  </head>
+  <body>
+
+  <!-- start nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <h2 class="mb-0 site-logo"><a href="/"><img src="{% static 'images/logo.png' %} " alt="KormOviggo" width="75" class="rounded-circle"> </a></h2>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link"> Hello,  {{user.username}} </a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="acc/logout">LOG OUT </a>
+      </li>
+      <li class="nav-item">
+            <a href="j/add" class="nav-link">ADD JOB</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="/j/dash/">DASHBOARD</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{%url 'about' %}">ABOUT US</a>
+      </li>
+      {% else %}
+          <li class="nav-item">
+            <a href="acc/login" class="nav-link">LOG IN</a>
+          </li>
+          <li class="nav-item">
+            <a href="acc/reg" class="nav-link">SIGN UP</a>
+      </li>
+
+      {% endif %}
+
+            </li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>
+
+
+
+<main role="main">
+    <div class="container" >
+    <h2>Get Jobs</h2>
+        <hr/>          {% for i in job%}
+
+         <div class="row">
+        <div class="col-md-3">
+          <div class="card mb-3 shadow">
+              <a href="{% url 'detail' i.id %}">
+                  <p class="card-text">Job Tittle: {{i.name}}</p></a>
+              <p class="card-text">Call: {{i.phone}}</p>
+              <p class="card-text">Description: {{i.description}}</p>
+
+            </div>
+               <br/>
+          </div>
+        </div>
+             <br/>
+
+          {% endfor %}
+      </div>
+
+    </div>
+
+
+</main>
+
+      </div>
+
+    </div>
+
+
+</main>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
